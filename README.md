@@ -3,9 +3,12 @@
 A robust, always-on SOCKS5 proxy tunnel designed to bypass ISP blocks and Tailscale routing restrictions directly from a rooted Android device.
 
 ## Overview
-This project turns a Termux installation on an Android device into an enterprise-grade SSH dynamic port forwarding tunnel. It bridges traffic through Tailscale, allowing external devices to bypass local ISP restrictions (like blocked websites) and access private IP ranges that the official Android Tailscale app refuses to route through Exit Nodes.
+This project turns a Termux installation on an Android device into an enterprise-grade SSH dynamic port forwarding tunnel. It bridges traffic through Tailscale, allowing external devices to bypass local ISP restrictions and securely access resources that are normally strictly limited to your home Wi-Fi network.
+
+**Core Use Case:** If your home ISP provides exclusive access to private FTP servers (e.g. BDIX FTPs) or private streaming sites (e.g. `dflix.live`), you can use this proxy to access those exact same sites from anywhere in the world, on any mobile network, as if you were sitting on your home couch.
 
 ## Features
+- **ISP FTP Bypass:** Seamlessly access restricted, private-ISP-only FTP servers and local streaming sites remotely from outside networks.
 - **SOCKS5 SSH Tunnel:** Uses native `sshd` to create a lightning-fast, secure tunnel.
 - **Home Screen Toggle:** Integrates with `Termux:Widget` for one-tap toggling directly from the Android home screen.
 - **Auto-Boot:** Integrates with `Termux:Boot` to silently start the proxy whenever the device reboots.
