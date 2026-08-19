@@ -48,7 +48,8 @@ This project turns a Termux installation on an Android device into an enterprise
 #### Step 1: Tailscale Exit Node Setup (Optional but Recommended)
 To route your normal public internet traffic through your home ISP as well:
 1. On your **Host Phone**, open the Tailscale app, tap the three dots (menu), and select **Run as exit node**.
-2. On your **Client Phone**, open Tailscale, tap your Host Phone's name, and select **Use exit node**.
+2. **Approve via Web:** Go to the [Tailscale Admin Console](https://login.tailscale.com/admin/machines) on their website. Find your Host Phone, click "Edit route settings", and toggle the "Use as exit node" switch to approve it.
+3. On your **Client Phone**, open Tailscale, tap your Host Phone's name, and select **Use exit node**.
 
 #### Step 2: Route Traffic through the SOCKS5 Proxy
 To access private ISP websites (which the Exit Node blocks), you must route traffic through the tunnel. You can do this system-wide (via Nekobox) or directly in a browser.
