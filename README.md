@@ -38,7 +38,11 @@ This project turns a Termux installation on an Android device into an enterprise
 
 ### On the Host (Home) Phone
 1. Open the Tailscale app on this phone and copy its `100.x.x.x` IP address.
-2. Tap the `Toggle-Proxy.sh` icon on your Android home screen via the Termux:Widget to start the proxy.
+2. **Via Widget (Recommended):** Tap the `Toggle-Proxy.sh` icon on your Android home screen via the Termux:Widget to start the proxy.
+3. **Via Terminal (Manual):** If you prefer using the terminal directly, you can start/stop the proxy by running:
+   ```bash
+   bash ~/Proxy-Scripts/Toggle-Proxy.sh
+   ```
 *(Note: The proxy will automatically start silently in the background thanks to Termux:Boot whenever your phone restarts).*
 
 ### On the Client (Outside) Phone
