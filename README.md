@@ -44,14 +44,36 @@ This project turns a Termux installation on an Android device into an enterprise
    - **To forcefully start:** Run `bash ~/Proxy-Scripts/start-proxy.sh` (This is also the script `Termux:Boot` runs automatically in the background when your phone restarts).
 
 ### On the Client (Outside) Phone
-To route traffic through the tunnel, use an app that supports custom SOCKS5 proxies while Tailscale is active (e.g., **Nekobox**, **Firefox**, or **Kiwi Browser** with SwitchyOmega).
 
-**Using Nekobox (Recommended for System-Wide/Brave Support):**
+#### Step 1: Tailscale Exit Node Setup (Optional but Recommended)
+To route your normal public internet traffic through your home ISP as well:
+1. On your **Host Phone**, open the Tailscale app, tap the three dots (menu), and select **Run as exit node**.
+2. On your **Client Phone**, open Tailscale, tap your Host Phone's name, and select **Use exit node**.
+
+#### Step 2: Route Traffic through the SOCKS5 Proxy
+To access private ISP websites (which the Exit Node blocks), you must route traffic through the tunnel. You can do this system-wide (via Nekobox) or directly in a browser.
+
+**Option A: Using Nekobox (System-Wide Support):**
 1. Add a new SOCKS5 profile with the proxy details below.
 2. **CRITICAL:** Go into Nekobox Settings and change the routing mode from **VPN** (default) to **Proxy**. Android only allows one active VPN at a time, so if Nekobox runs as a VPN, it will disconnect Tailscale!
 3. Start the proxy in Nekobox.
 
-**Proxy Details:**
+**Option B: Using Firefox (Browser-Only):**
+1. Open Firefox for Android.
+2. Type `about:config` in the address bar.
+3. Search for `network.proxy.socks` and enter your `<Your-Home-Phone-Tailscale-IP>`.
+4. Search for `network.proxy.socks_port` and enter `1080`.
+5. Search for `network.proxy.type` and change it to `1` (Manual proxy).
+6. Search for `network.proxy.socks_remote_dns` and set it to `true`.
+
+**Option C: Using Kiwi Browser (Browser-Only):**
+1. Install **Kiwi Browser** from the Play Store.
+2. Install the **Proxy SwitchyOmega** extension from the Chrome Web Store.
+3. Create a new profile in SwitchyOmega.
+4. Set the Protocol to `SOCKS5`, Server to `<Your-Home-Phone-Tailscale-IP>`, and Port to `1080`.
+5. Apply the profile and activate it.
+
+**Proxy Details Reference:**
 - **IP:** `<Your-Home-Phone-Tailscale-IP>` (e.g. `100.x.x.x`)
 - **Port:** `1080`
 - **Type:** SOCKS5 (with Remote DNS enabled)
